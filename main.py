@@ -24,7 +24,8 @@ options.add_experimental_option('excludeSwitches', ['enable-logging'])
 driver = webdriver.Chrome(service=service, options=options)
 date = '2025-02-02'
 seat = '211'
-
+#TODO: 输入学工号和密码、日期、座位号
+#TODO：每日7：00：00±5s内自动运行
 try:
     # 一、进入网站并登录
     driver.get("https://m.ruc.edu.cn/uc/wap/login?redirect=https%3A%2F%2Fm.ruc.edu.cn%2Fsite%2FapplicationSquare%2Findex%3Fsid%3D23");print("已进入网站")
@@ -54,7 +55,8 @@ try:
     # WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//button[contains(@class, 'van-button') and contains(@class, 'van-calendar__confirm') and text()='确定']"))).click()
     WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//button[.//span[text()='确定']]"))).click();print("已选择日期并点击“确定”")
     # 七、选择211号座位
-    WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, f"//div[text()='{seat}']"))).click();print("已选择211号座位")
+    #TODO：添加判断，如果座位被其他人选了，就发出警告
+    WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, f"//div[text()='{seat}']"))).click();print(f"已选择{seat}号座位")
     # 八、点击“确定”
     WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//div[text()='确定']"))).click();print("已点击“确定”")
     # 九、验证码
@@ -65,13 +67,10 @@ try:
     
     # 输入验证码
     WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//input[@class='inputCode']"))).send_keys(captcha_code)
-    
-    # 点击“验证”
-    WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//div[text()='验证']"))).click()
-    print("已输入验证码")
+    WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//div[text()='验证']"))).click();print("已输入验证码")
+
+    print(f"程序执行完毕，成功预约{date}的{seat}号座位")
 finally:
     # 关闭 WebDriver
     driver.quit()
     print("已关闭浏览器")
-
-print(f"程序执行完毕，成功预约{date}的{seat}号座位")
