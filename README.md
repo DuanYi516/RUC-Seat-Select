@@ -13,5 +13,5 @@
  - 点击右侧Releases下载  
 
 ---
-致敬传奇牢張（國內）
 ![alt text](image.png)
+![alt text](962cc7a0d7fea38e0173728306f12d0f.jpg)
