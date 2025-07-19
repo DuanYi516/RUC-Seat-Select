@@ -1,6 +1,6 @@
 {
     "STUDENT_ID": "换成你自己的学号", 
     "PASSWORD": "换成你自己的密码", 
-    "SEAT": 换成你想预约的座位号, 
+    "SEAT": "换成你想预约的座位号", 
     "CHROMEDRIVER_PATH": "换成你自己的chromedriver路径，通常在C:/Program Files/Google/Chrome/Application/chromedriver.exe" 
 }
